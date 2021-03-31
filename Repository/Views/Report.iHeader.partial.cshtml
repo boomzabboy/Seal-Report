@@ -20,7 +20,7 @@
                 @if (configuration.HasLogo)
                 {
                     <a href="#" class="navbar-left hidden-xs"  title="@configuration.WebProductName">
-                        <img src="@report.AttachImageFile(configuration.LogoName)" class="img-responsive">
+                        <img src="@report.AttachImageFile(configuration.LogoName)" width="130" height="70" class="img-responsive">
                     </a>
                 }
                 <a id="nav_button" href="#" class="navbar-brand">@(!configuration.HasLogo ? configuration.WebProductName + " - " : "")@report.ExecutionName</a><span id="nav_badge" class="badge navbar-left hidden">@report.Translate("Nav")</span>
@@ -50,6 +50,7 @@
                                 <li><a id="CSVResult" class="result_item" href="#">@report.Translate("View CSV Result")</a></li>
                                 <li><a id="PDFResult" class="result_item converter_item" href="#">@report.Translate("View PDF Result")</a></li>
                                 <li><a id="ExcelResult" class="result_item converter_item" href="#">@report.Translate("View Excel Result")</a></li>
+                                <li><a id="WordResult" class="result_item converter_item" href="#">@report.Translate("View Word Result")</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -177,7 +177,7 @@ function setMessageHeight() {
 
 function resize(printLayout) {
     if (!printLayout) {
-        setTimeout(function () { $("#report_body_container").css("padding-top", $("#bar_top").height() + 15); }, 200);
+        //setTimeout(function () { $("#report_body_container").css("padding-top", $("#bar_top").height() + 15); }, 200);
         setMessageHeight();
     }
     redrawDataTables();

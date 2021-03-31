@@ -22,7 +22,8 @@ namespace SealWebServer.Controllers
     public partial class HomeController : Controller
     {
         /// <summary>
-        /// Start a session with the Web Report Server using the user name, password, token (may be optional according to the authentication configured on the server) and returns information of the logged user (SWIUserProfile).
+        /// Start a session with the Web Report Server using the user name, pass
+        /// , token (may be optional according to the authentication configured on the server) and returns information of the logged user (SWIUserProfile).
         /// </summary>
         public ActionResult SWILogin(string user, string password, string token)
         {
