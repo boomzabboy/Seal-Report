@@ -31,11 +31,11 @@
         @Raw(report.AttachScriptFile("datatables.min.js", "https://cdn.datatables.net/v/bs-3.3.7/jq-3.3.1/dt-1.10.20/b-1.6.1/fc-3.3.0/fh-3.1.6/r-2.2.3/sc-2.0.1/sl-1.3.1/datatables.min.js"))
         @Raw(report.AttachScriptFile("bootstrap-select.min.js", "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"))
         @Raw(report.AttachScriptFile("moment.min.js"))
-        @if (view.CultureInfo.TwoLetterISOLanguageName != "en")
-        {
-            @Raw(report.AttachScriptFile("i18n\\moment." + view.CultureInfo.TwoLetterISOLanguageName + ".js"))
-            @Raw(report.AttachScriptFile("i18n\\selectpicker." + view.CultureInfo.TwoLetterISOLanguageName + ".min.js"))
-        }
+
+        <!-- Datetime picker -->
+        @Raw(report.AttachScriptFile("i18n\\moment.th.js"))
+        @Raw(report.AttachScriptFile("i18n\\selectpicker.th.min.js"))
+        
         @Raw(report.AttachScriptFile("bootstrap-datetimepicker.min.js"))
 
         @Raw(report.AttachScriptFile("datetime-moment.js"))
