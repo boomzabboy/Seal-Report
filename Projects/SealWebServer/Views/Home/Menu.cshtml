@@ -17,8 +17,8 @@
                 <span class="icon-bar"></span>
             </button>
             <div>
-                <!-- <a id="brand-id" class="navbar-brand hidden-xs" href="#">@repository.Configuration.WebProductName</a> -->
-		<a id="brand-id" class="navbar-brand hidden-xs" href="#"><img src="~/Images/logo.png" width="130" height="50"></a>
+                <!-- <a id="brand-id" class="navbar-brand hidden-xs" href="#">@repository.Configuration.WebProductName</a> 
+		<a id="brand-id" class="navbar-brand hidden-xs" href="#"><img src="~/Images/logo.png" width="130" height="50"></a> -->
                 <ul style="float:left;margin:0;padding:10px 0px;list-style:none">
                     <li class="dropdown">
                         <a id="menu-main-button" href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:10px 5px" title="@repository.TranslateWeb("เมนูรายงาน")">
@@ -55,25 +55,25 @@
             <button id="reload-nav-item" class="btn btn-primary navbar-btn navbar-right reportview" title="@repository.TranslateWeb("โหลดใหม่และค้นหา")">
                 <span class="glyphicon glyphicon-play"></span>
             </button>
-            <button id="execute_button" class="btn btn-success navbar-btn navbar-right reportview">@repository.TranslateReport("ค้นหา")</button>
+            <button id="execute_button" class="btn btn-success navbar-btn navbar-right reportview">@repository.TranslateReport("ดำเนินการ")</button>
             <button id="restrictions_button" type="button" class="btn btn-info navbar-btn navbar-right reportview" title="@repository.TranslateReport("แสดง/ซ่อน กล่องค้นหา")">
                 <span class="glyphicon glyphicon-filter"></span>
             </button>
             <ul class="nav navbar-nav pull-xs-right navbar-right">
                 <li><a id="report_button" class="sr_tab reportview" data-toggle="tab" href="#report_div">@repository.TranslateReport("รายงาน")</a></li>
-                <!-- <li><a id="information_button" class="sr_tab reportview" data-toggle="tab" href="#information_div">@repository.TranslateReport("Information")</a></li>
-    <li><a id="message_button" class="sr_tab reportview" data-toggle="tab" href="#message_div">@repository.TranslateReport("Messages")</a></li> -->
+                <li><a id="information_button" class="sr_tab reportview" data-toggle="tab" href="#information_div">@repository.TranslateReport("ข้อมูล")</a></li>
+				<li><a id="message_button" class="sr_tab reportview" data-toggle="tab" href="#message_div">@repository.TranslateReport("ข้อความ")</a></li>
                 <li id="results_menu" class="dropdown reportview">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        @repository.TranslateReport("รูปแบบส่งออก")
+                        @repository.TranslateReport("ผลลัพธ์")
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a id="HtmlResult" class="result_item" href="#">@repository.TranslateReport("รูปแบบ HTML")</a></li>
-                        <li><a id="PrintResult" class="result_item" href="#">@repository.TranslateReport("รูปแบบ Print")</a></li>
-                        <li><a id="CSVResult" class="result_item" href="#">@repository.TranslateReport("รูปแบบ CSV")</a></li>
-                        <li><a id="PDFResult" class="result_item converter_item" href="#">@repository.TranslateReport("รูปแบบ PDF")</a></li>
-                        <li><a id="ExcelResult" class="result_item converter_item" href="#">@repository.TranslateReport("รูปแบบ Excel")</a></li>
+                        <li><a id="HtmlResult" class="result_item" href="#">แสดงผลลัพธ์ HTML</a></li>
+                        <li><a id="PrintResult" class="result_item" href="#">แสดงผลลัพธ์ Print</a></li>
+                        <li><a id="CSVResult" class="result_item" href="#">แสดงผลลัพธ์ CSV</a></li>
+                        <li><a id="PDFResult" class="result_item converter_item" href="#">แสดงผลลัพธ์ PDF</a></li>
+                        <li><a id="ExcelResult" class="result_item converter_item" href="#">แสดงผลลัพธ์ Excel</a></li>
                     </ul>
                 </li>
                 <li class="nav-item folderview"><a id="refresh-nav-item" class="navbar-white fa fa-refresh" title="@repository.TranslateWeb("โหลดใหม่")"></a></li>

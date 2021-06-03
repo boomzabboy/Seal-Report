@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <GUID>8c41d8a7-ad3f-4c8f-98e2-2580421a9668</GUID>
+   <Name>แดชบอร์ดสำหรับผู้ปฏิบัติงาน</Name>
+   <Items>
+      <DashboardItem>
+         <GUID>2903eb5f-1f01-478c-a366-45b5e28c1da8</GUID>
+         <WidgetGUID>6be36f14-2c07-4178-b427-941f48087f41</WidgetGUID>
+         <GroupOrder>1</GroupOrder>
+         <Order>1</Order>
+		 <Icon>glyphicon glyphicon-list-alt</Icon>
+         <Color>info</Color>
+         <Dynamic>true</Dynamic>
+         <Refresh>60</Refresh>
+      </DashboardItem>
+   </Items>
+</Dashboard>

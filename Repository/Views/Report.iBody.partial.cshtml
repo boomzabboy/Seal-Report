@@ -21,7 +21,7 @@
 
     function processOpenMessagesInNewWindow() {
         var myWindow = window.open('');
-        myWindow.document.write("<head><title>" + '@Raw(Helper.ToJS(report.Translate("Messages")))' + "</title></head><div id='messages'>" + $("#execution_messages").html() + "<div>");
+        myWindow.document.write("<head><title>" + '@Raw(Helper.ToJS(report.Translate("ข้อความ")))' + "</title></head><div id='messages'>" + $("#execution_messages").html() + "<div>");
     }
 
     function processSubmitViewParameter(parameterName, parameterValue, viewId) {
@@ -42,12 +42,12 @@
         $(".alert-danger").addClass('hidden');
         $(".alert-danger").html("");
 
-        $("#execute_button").text('@Raw(Helper.ToJS(report.Translate("Cancel")))');
+        $("#execute_button").text('@Raw(Helper.ToJS(report.Translate("ยกเลิก")))');
         $("#execute_button").removeClass("btn-success").addClass("btn-warning");
 
         $("#progress_panel").removeClass('hidden');
         $(".progress").removeClass('hidden');
-        setProgressBarMessage("#progress_bar", 5,  '@Raw(Helper.ToJS(report.Translate("Starting execution...")))', "progress-bar-success");
+        setProgressBarMessage("#progress_bar", 5,  '@Raw(Helper.ToJS(report.Translate("กำลังเริ่มดำเนินการ...")))', "progress-bar-success");
     }
 
     function processReportViews() {
@@ -73,7 +73,7 @@
 
         function processReportExecuted() {
             $("#nav_button").html('@Raw(Helper.ToJS(report.ExecutionName))');
-            $("#execute_button").html('@Raw(Helper.ToJS(report.Translate("Execute")))');
+            $("#execute_button").html('@Raw(Helper.ToJS(report.Translate("ดำเนินการ")))');
             $("#execute_button").removeClass("btn-warning").addClass("btn-success");
 
             processReportViews();
@@ -354,7 +354,7 @@
 }
 
 <!--back to top-->
-<a id="back-to-top" href="#" class="btn btn-warning btn-lg back-to-top" role="button" title="@Raw(Helper.ToJS(report.Translate("Back to top")))" data-toggle="tooltip" data-placement="top">
+<a id="back-to-top" href="#" class="btn btn-warning btn-lg back-to-top" role="button" title="@Raw(Helper.ToJS(report.Translate("กลับไปด้านบน")))" data-toggle="tooltip" data-placement="top">
     <span>&#916;</span>
     <span id="back-to-top-close" style="top:0px;right:4px;font-size:14px;position:absolute;">&times;</span>
 </a>

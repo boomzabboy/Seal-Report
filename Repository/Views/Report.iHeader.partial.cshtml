@@ -20,7 +20,7 @@
                 @if (configuration.HasLogo)
                 {
                     <a href="#" class="navbar-left hidden-xs"  title="@configuration.WebProductName">
-                        <img src="@report.AttachImageFile(configuration.LogoName)" width="130" height="70" class="img-responsive">
+                    <img src="@report.AttachImageFile(configuration.LogoName)" width="130" height="70" class="img-responsive">
                     </a>
                 }
                 <a id="nav_button" href="#" class="navbar-brand">@(!configuration.HasLogo ? configuration.WebProductName + " - " : "")@report.ExecutionName</a><span id="nav_badge" class="badge navbar-left hidden">@report.Translate("Nav")</span>
