@@ -500,6 +500,7 @@ namespace Seal.Model
         {
             get
             {
+                if (_templateName == null) return "";
                 if (_templateName.EndsWith(" HTML")) return _templateName.Replace(" HTML", ""); //backward compatibility before 5.0
                 if (_templateName == "Model Container") return ("Container"); //backward compatibility before 6.1
                 return _templateName;
@@ -541,12 +542,12 @@ namespace Seal.Model
         }
         public bool ShouldSerializeModelGUID() { return !string.IsNullOrEmpty(_modelGUID); }
 
-        bool _useModelName = false;
+        bool _useModelName = true;
         /// <summary>
         /// If true, the view name is got from the model name. This is only valid for a Model View.
         /// </summary>
         [DisplayName("Use model name"), Description("If true, the view name is got from the model name."), Category("Definition"), Id(4, 1)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool UseModelName
         {
             get { return _useModelName; }
@@ -559,7 +560,7 @@ namespace Seal.Model
                 _useModelName = value;
             }
         }
-        public bool ShouldSerializeUseModelName() { return _useModelName; }
+        public bool ShouldSerializeUseModelName() { return !_useModelName; }
 
 
         bool _showInMenu = false;
@@ -743,7 +744,6 @@ namespace Seal.Model
         public bool ShouldSerializePartialTemplates() { return PartialTemplates.Count > 0; }
 
 
-#if !NETCOREAPP
         /// <summary>
         /// The custom partial template texts for the view
         /// </summary>
@@ -759,7 +759,7 @@ namespace Seal.Model
                 return editor;
             }
         }
-#endif
+
 
         /// <summary>
         /// The view parameters
@@ -785,7 +785,6 @@ namespace Seal.Model
         }
         public bool ShouldSerializeCultureName() { return !string.IsNullOrEmpty(_cultureName); }
 
-#if !NETCOREAPP
         /// <summary>
         /// The view configuration values for edition.
         /// </summary>
@@ -801,7 +800,7 @@ namespace Seal.Model
                 return editor;
             }
         }
-#endif
+
 
         /// <summary>
         /// Current sort order of the view
@@ -971,7 +970,7 @@ namespace Seal.Model
                     _pdfConverter = SealPdfConverter.Create();
                     if (PdfConfigurations.Count == 0) PdfConfigurations = Repository.Instance.Configuration.PdfConfigurations.ToList();
                     _pdfConverter.SetConfigurations(PdfConfigurations, this);
-                    _pdfConverter.EntityHandler = HelperEditor.HandlerInterface; //!NETCore
+                    _pdfConverter.EntityHandler = HelperEditor.HandlerInterface; 
                     UpdateEditorAttributes();
                 }
                 return _pdfConverter;
@@ -1012,7 +1011,7 @@ namespace Seal.Model
                 {
                     _excelConverter = SealExcelConverter.Create();
                     _excelConverter.SetConfigurations(ExcelConfigurations, this);
-                    _excelConverter.EntityHandler = HelperEditor.HandlerInterface; //!NETCore
+                    _excelConverter.EntityHandler = HelperEditor.HandlerInterface; 
                     UpdateEditorAttributes();
                 }
                 return _excelConverter;
