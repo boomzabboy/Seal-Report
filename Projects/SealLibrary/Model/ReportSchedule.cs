@@ -140,7 +140,7 @@ namespace Seal.Model
             {
                 SealSchedule.Start = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -159,7 +159,7 @@ namespace Seal.Model
             {
                 SealSchedule.End = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -180,7 +180,7 @@ namespace Seal.Model
             {
                 SealSchedule.Type = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -199,7 +199,7 @@ namespace Seal.Model
             {
                 SealSchedule.DaysInterval = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -218,7 +218,7 @@ namespace Seal.Model
             {
                 SealSchedule.WeeksInterval = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -238,7 +238,7 @@ namespace Seal.Model
             {
                 SealSchedule.Weekdays = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -258,7 +258,7 @@ namespace Seal.Model
             {
                 SealSchedule.Months = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -278,7 +278,7 @@ namespace Seal.Model
             {
                 SealSchedule.Days = value;
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -299,7 +299,7 @@ namespace Seal.Model
             {
                 SealSchedule.RepeatInterval = Helper.ToTimeSpan(value, null);
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -320,7 +320,7 @@ namespace Seal.Model
             {
                 SealSchedule.RepeatDuration = Helper.ToTimeSpan(value, null);
                 SealSchedule.CalculateNextExecution();
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -513,7 +513,7 @@ namespace Seal.Model
             set
             {
                 _notificationEmailTo = value;
-                UpdateEditorAttributes();   
+                UpdateEditorAttributes();  //!NETCore 
             }
         }
 
@@ -760,6 +760,15 @@ namespace Seal.Model
 
 
         #region Helpers
+        /// <summary>
+        /// Editor Helper: Edit the report schedule properties
+        /// </summary>
+        [Category("Helpers"), DisplayName("Edit schedule properties"), Description("Edit the report schedule properties. Warning: Schedules may also be edited and managed using the Task Scheduler Microsoft Management Console."), Id(2, 10)]
+        [Editor(typeof(HelperEditor), typeof(UITypeEditor))]
+        public string HelperEditProperties
+        {
+            get { return "<Click to edit the schedule properties>"; }
+        }
 
         /// <summary>
         /// Editor Helper: Run Task Scheduler MMC

@@ -244,7 +244,6 @@ namespace Seal.Model
         public string viewGUID;
         public string outputGUID;
         public string name;
-        public string classes = "";
         public List<SWIMenuItem> items = new List<SWIMenuItem>();
     }
 }

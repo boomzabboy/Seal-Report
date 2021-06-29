@@ -61,6 +61,7 @@ namespace Seal.Model
             get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
         }
 
+#if !NETCOREAPP
         /// <summary>
         /// Product icon
         /// </summary>
@@ -68,6 +69,7 @@ namespace Seal.Model
         {
             get { return Path.GetFileName(Application.ExecutablePath).ToLower() == SealServerManager.ToLower() ? Properties.Resources.serverManager : Properties.Resources.reportDesigner; }
         }
+#endif
 
         private string _licenseText = null;
         /// <summary>
@@ -287,7 +289,11 @@ namespace Seal.Model
         {
             get
             {
+#if !NETCOREAPP
                 return Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("file:///", ""))), "Repository");
+#else
+                return Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Replace("file://", "")), "Repository");
+#endif
             }
         }
 
@@ -633,7 +639,11 @@ namespace Seal.Model
         {
             get
             {
-                return Path.Combine(RepositoryPath, "Assemblies"); 
+#if NETCOREAPP
+                return Path.Combine(RepositoryPath, Path.Combine("Assemblies","NETCore")); 
+#else
+                return Path.Combine(RepositoryPath, "Assemblies");
+#endif
             }
         }
 
@@ -644,7 +654,11 @@ namespace Seal.Model
         {
             get
             {
+#if NETCOREAPP
+                return Path.Combine(AssembliesFolder, "SealConverter_NetCore.dll");
+#else
                 return Path.Combine(AssembliesFolder, "SealConverter.dll");
+#endif
             }
         }
 

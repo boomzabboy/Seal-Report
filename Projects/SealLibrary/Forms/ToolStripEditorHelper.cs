@@ -336,7 +336,7 @@ namespace Seal.Forms
         void EditProperty(string label)
         {
             MainPropertyGrid.Focus();
-            var gridItems = Helper.GetAllGridEntries(MainPropertyGrid);
+            GridItemCollection gridItems = Helper.GetAllGridEntries(MainPropertyGrid);
             foreach (GridItem gridItem in gridItems)
             {
                 if (gridItem.Label.Replace("\t", "") == label)

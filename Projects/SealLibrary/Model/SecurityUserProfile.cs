@@ -120,10 +120,11 @@ namespace Seal.Model
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(SecurityUserProfile));
-                using (var tw = new StreamWriter(path))
+                XmlWriterSettings ws = new XmlWriterSettings();
+                ws.NewLineHandling = NewLineHandling.Entitize;
+                using (XmlWriter xw = XmlWriter.Create(path, ws))
                 {
-                    serializer.Serialize(tw, this);
-                    tw.Close();
+                    serializer.Serialize(xw, this);
                 }
             }
             finally

@@ -106,9 +106,7 @@ namespace Seal.Forms
 
         private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo("https://sealreport.org") { UseShellExecute = true };
-            p.Start();
+            Process.Start("https://sealreport.org");
         }
 
         private void AboutBoxForm_Shown(object sender, EventArgs e)

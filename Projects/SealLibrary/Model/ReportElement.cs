@@ -263,7 +263,7 @@ namespace Seal.Model
                     SetStandardFormat();
                 }
                 else Type = value;
-                UpdateEditorAttributes();  
+                UpdateEditorAttributes();  //!NETCore
             }
         }
 
@@ -434,7 +434,7 @@ namespace Seal.Model
                     }
                 }
                 _calculationOption = value;
-                UpdateEditorAttributes();  
+                UpdateEditorAttributes();  //!NETCore
             }
         }
 
