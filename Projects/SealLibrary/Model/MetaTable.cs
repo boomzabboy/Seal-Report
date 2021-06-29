@@ -346,7 +346,7 @@ namespace Seal.Model
             set
             {
                 _dynamicColumns = value;
-                UpdateEditorAttributes();  
+                UpdateEditorAttributes();  //!NETCore
             }
         }
         public bool ShouldSerializeDynamicColumns() { return _dynamicColumns; }
@@ -364,6 +364,7 @@ namespace Seal.Model
         [Category("Definition"), DisplayName("Table Type"), Description("Type of the table got from database catalog."), Id(8, 1)]
         public string Type { get; set; }
 
+#if !NETCOREAPP
         /// <summary>
         /// The parameter values for edition.
         /// </summary>
@@ -379,6 +380,7 @@ namespace Seal.Model
                 return editor;
             }
         }
+#endif
 
         /// <summary>
         /// If true, the table must be refreshed for dynamic columns
@@ -781,7 +783,7 @@ namespace Seal.Model
                 Information = "Error got when refreshing dynamic columns.";
             }
             Information = Helper.FormatMessage(Information);
-            UpdateEditorAttributes(); 
+            UpdateEditorAttributes();  //!NETCore
         }
 
         /// <summary>
@@ -831,7 +833,7 @@ namespace Seal.Model
                 Information = "Error got when sorting columns.";
             }
             Information = Helper.FormatMessage(Information);
-            UpdateEditorAttributes();  
+            UpdateEditorAttributes();  //!NETCore
         }
 
         /// <summary>
@@ -896,7 +898,7 @@ namespace Seal.Model
                 Information = "Error got when checking the table.";
             }
             Information = Helper.FormatMessage(Information);
-            UpdateEditorAttributes();  
+            UpdateEditorAttributes();  //!NETCore
         }
 
         /// <summary>

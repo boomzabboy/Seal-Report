@@ -5,7 +5,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+using System.Web.Mvc;
 using Seal.Helpers;
 using Seal.Model;
 using System.Threading;
@@ -134,7 +134,7 @@ namespace SealWebServer.Controllers
                     }
                 }
 
-                return Json(profile); 
+                return Json(profile, JsonRequestBehavior.AllowGet); 
             }
             catch (Exception ex)
             {
@@ -230,7 +230,7 @@ namespace SealWebServer.Controllers
                     WebUser.ScriptNumber++;
                 }
 
-                return Json(WebUser.WebMenu);
+                return Json(WebUser.WebMenu, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -292,7 +292,7 @@ namespace SealWebServer.Controllers
                     WebUser.ScriptNumber++;
 
                 }
-                return Json(WebUser.Folders);
+                return Json(WebUser.Folders, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -312,7 +312,7 @@ namespace SealWebServer.Controllers
                 var folderDetail = getFolderDetail(path, true);
                 WebUser.Profile.LastFolder = path;
                 WebUser.Profile.SaveToFile();
-                return Json(folderDetail);
+                return Json(folderDetail, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -334,7 +334,7 @@ namespace SealWebServer.Controllers
                 path = folder.GetFullPath();
                 searchFolder(folder, pattern, files);
 
-                return Json(new SWIFolderDetail() { files = files });
+                return Json(new SWIFolderDetail() { files = files }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -354,7 +354,7 @@ namespace SealWebServer.Controllers
                 if (folder.manage != 2) throw new Exception("Error: no right to delete this folder");
                 Directory.Delete(folder.GetFullPath());
                 Audit.LogAudit(AuditType.FolderDelete, WebUser, folder.GetFullPath());
-                return Json(new object { });
+                return Json(new object { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -374,7 +374,7 @@ namespace SealWebServer.Controllers
                 if (folder.manage == 0) throw new Exception("Error: no right to create in this folder");
                 Directory.CreateDirectory(folder.GetFullPath());
                 Audit.LogAudit(AuditType.FolderCreate, WebUser, folder.GetFullPath());
-                return Json(new object { });
+                return Json(new object { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -400,7 +400,7 @@ namespace SealWebServer.Controllers
                 checkRecentFiles();
                 WebUser.SaveProfile();
 
-                return Json(new object { });
+                return Json(new object { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -431,7 +431,7 @@ namespace SealWebServer.Controllers
                 result.outputs = ((FolderRight)folder.right >= FolderRight.ExecuteReportOuput) ? (from i in report.Outputs.Where(j => j.PublicExec || string.IsNullOrEmpty(j.UserName) || (!j.PublicExec && j.UserName == WebUser.Name)) select new SWIOutput() { guid = i.GUID, name = i.Name, displayname = report.TranslateOutputName(i.Name) }).ToList() : new List<SWIOutput>();
                 if (result.views.Count == 0 && result.outputs.Count == 0) result.views = (from i in report.Views.Where(i => i.WebExec) select new SWIView() { guid = i.GUID, name = i.Name, displayname = report.TranslateViewName(i.Name) }).ToList();
 
-                return Json(result);
+                return Json(result, JsonRequestBehavior.AllowGet);
 
             }
             catch (Exception ex)
@@ -478,7 +478,7 @@ namespace SealWebServer.Controllers
                         WebUser.SaveProfile();
                     }
                 }
-                return Json(new object { });
+                return Json(new object { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -533,7 +533,7 @@ namespace SealWebServer.Controllers
                 checkRecentFiles();
                 WebUser.SaveProfile();
 
-                return Json(new object { });
+                return Json(new object { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -680,7 +680,7 @@ namespace SealWebServer.Controllers
                 setSessionValue(SessionUploadedFiles, null);
                 CreateWebUser();
 
-                return Json(new { });
+                return Json(new { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -719,7 +719,7 @@ namespace SealWebServer.Controllers
                 }
                 WebUser.SaveProfile();
 
-                return Json(new { });
+                return Json(new { }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -748,7 +748,7 @@ namespace SealWebServer.Controllers
             catch
             {
                 //not authenticated
-                return Json(new { authenticated = false });
+                return Json(new { authenticated = false }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -784,7 +784,7 @@ namespace SealWebServer.Controllers
                     if (cultureInfo == null) cultureInfo = allCultures.FirstOrDefault(i => i.Name == culture);
                     if (cultureInfo != null) result.Add(new SWIItem() { id = cultureInfo.EnglishName, val = string.Format("{0} - {1}", cultureInfo.NativeName, cultureInfo.EnglishName) });
                 }
-                return Json(result.OrderBy(i => i.val).ToArray());
+                return Json(result.OrderBy(i => i.val).ToArray(), JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -802,7 +802,7 @@ namespace SealWebServer.Controllers
             {
                 checkSWIAuthentication();
                 if (!string.IsNullOrEmpty(instance)) return Json(new { text = Repository.RepositoryTranslate(context, instance, reference) });
-                return Json(new { text = Repository.Translate(context, reference) });
+                return Json(new { text = Repository.Translate(context, reference) }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -818,7 +818,7 @@ namespace SealWebServer.Controllers
             writeDebug("SWIGetVersions");
             try
             {
-                return Json(new { SWIVersion = Repository.ProductVersion, SRVersion = Repository.ProductVersion, Info = Info });
+                return Json(new { SWIVersion = Repository.ProductVersion, SRVersion = Repository.ProductVersion, Info = Info }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -827,4 +827,3 @@ namespace SealWebServer.Controllers
         }
     }
 }
-

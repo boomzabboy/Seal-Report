@@ -298,10 +298,11 @@ namespace Seal.Model
                 }
             }
             XmlSerializer serializer = new XmlSerializer(typeof(SealSecurity));
-            using (var tw = new StreamWriter(path))
+            XmlWriterSettings ws = new XmlWriterSettings();
+            ws.NewLineHandling = NewLineHandling.Entitize;
+            using (XmlWriter xw = XmlWriter.Create(path, ws))
             {
-                serializer.Serialize(tw, this);
-                tw.Close();
+                serializer.Serialize(xw, this);
             }
             FilePath = path;
             LastModification = File.GetLastWriteTime(path);

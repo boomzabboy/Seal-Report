@@ -11,6 +11,7 @@ namespace Seal.Forms
     {
         void SetModified();
         void InitEntity(object entity);
+        void EditSchedule(ReportSchedule schedule);
         void RefreshModelTreeView();
         void UpdateModelNode(TreeNode currentNode = null);
     }

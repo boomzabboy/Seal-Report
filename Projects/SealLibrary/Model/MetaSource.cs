@@ -211,7 +211,7 @@ namespace Seal.Model
         {
             MetaConnection result = MetaConnection.Create(this);
             result.ConnectionString = DefaultConnectionString;
-            result.DatabaseType = Helper.GetDatabaseType(result.ConnectionString); 
+            result.DatabaseType = ConnectionStringEditor.GetDatabaseType(result.ConnectionString); //!NETCore
 
             result.Name = Helper.GetUniqueName(result.Name, (from i in Connections select i.Name).ToList());
             Connections.Add(result);
@@ -493,10 +493,11 @@ namespace Seal.Model
 
                 Name = Path.GetFileNameWithoutExtension(path);
                 XmlSerializer serializer = new XmlSerializer(typeof(MetaSource));
-                using (var tw = new StreamWriter(path))
+                XmlWriterSettings ws = new XmlWriterSettings();
+                ws.NewLineHandling = NewLineHandling.Entitize;
+                using (XmlWriter xw = XmlWriter.Create(path, ws))
                 {
-                    serializer.Serialize(tw, this);
-                    tw.Close();
+                    serializer.Serialize(xw, this);
                 }
                 FilePath = path;
                 LastModification = File.GetLastWriteTime(path);

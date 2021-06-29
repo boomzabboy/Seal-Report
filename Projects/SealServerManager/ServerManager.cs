@@ -83,13 +83,11 @@ namespace Seal
             Icon = Properties.Resources.serverManager;
 
             //Repository management, should be part of the installation
-            try
+            _repository = Repository.Create();
+            if (_repository == null)
             {
-                _repository = Repository.Create();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _repository = new Repository();
+                MessageBox.Show("No repository has been defined or found for this installation. Reports will not be rendered. Please modify the .configuration file to set a RepositoryPath containing at least a Views subfolder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //handle program args
@@ -192,6 +190,10 @@ namespace Seal
         }
 
         public void SimulateKeyPress(Keys key)
+        {
+        }
+
+        public void EditSchedule(ReportSchedule schedule)
         {
         }
 
@@ -626,9 +628,7 @@ namespace Seal
 
         private void openFolderToolStripButton_Click(object sender, EventArgs e)
         {
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo(_repository.RepositoryPath) { UseShellExecute = true };
-            p.Start();
+            Process.Start(_repository.RepositoryPath);
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -661,18 +661,11 @@ namespace Seal
         {
             if (sender == openTasksToolStripButton)
             {
-                if (Helper.CheckTaskSchedulerOS())
-                {
-                    var p = new Process();
-                    p.StartInfo = new ProcessStartInfo(Path.Combine(Environment.SystemDirectory, "taskschd.msc"), "/s") { UseShellExecute = true };
-                    p.Start();
-                }
+                if (Helper.CheckTaskSchedulerOS()) Process.Start(Path.Combine(Environment.SystemDirectory, "taskschd.msc"), "/s");
             }
             else if (sender == openEventsToolStripButton)
             {
-                var p = new Process();
-                p.StartInfo = new ProcessStartInfo(Path.Combine(Environment.SystemDirectory, "eventvwr.msc"), "/s") { UseShellExecute = true };
-                p.Start();
+                Process.Start(Path.Combine(Environment.SystemDirectory, "eventvwr.msc"), "/s");
             }
         }
 

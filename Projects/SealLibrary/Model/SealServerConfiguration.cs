@@ -189,7 +189,7 @@ namespace Seal.Model
             set
             {
                 _useSealScheduler = value;
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -214,7 +214,7 @@ namespace Seal.Model
             set
             {
                 _auditEnabled = value;
-                UpdateEditor(); 
+                UpdateEditor(); //!NETCore
             }
         }
 
@@ -580,19 +580,19 @@ namespace Seal.Model
             {
                 ExcelConfigurations = ExcelConverter.GetConfigurations();
             }
-#if !DEBUG 
+#if !DEBUG && !NETCOREAPP
             //Set installation path, used by, to define schedules
             if (Path.GetFileName(Application.ExecutablePath).ToLower() == Repository.SealServerManager.ToLower() || Path.GetFileName(Application.ExecutablePath).ToLower() == Repository.SealReportDesigner.ToLower())
             {
                 _installationDirectory = Path.GetDirectoryName(Application.ExecutablePath); 
             }
 #endif
-
             XmlSerializer serializer = new XmlSerializer(typeof(SealServerConfiguration), xmlOverrides);
-            using (var tw = new StreamWriter(path))
+            XmlWriterSettings ws = new XmlWriterSettings();
+            ws.NewLineHandling = NewLineHandling.Entitize;
+            using (XmlWriter xw = XmlWriter.Create(path, ws))
             {
-                serializer.Serialize(tw, this);
-                tw.Close();
+                serializer.Serialize(xw, this);
             }
             FilePath = path;
             LastModification = File.GetLastWriteTime(path);

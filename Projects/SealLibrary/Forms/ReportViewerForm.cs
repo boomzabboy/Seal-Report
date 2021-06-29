@@ -269,60 +269,35 @@ namespace Seal.Forms
                     case ReportExecution.ActionViewHtmlResult:
                         setCurrentExecution();
                         string resultPath = _execution.GenerateHTMLResult();
-                        if (File.Exists(resultPath))
-                        {
-                            var p = new Process();
-                            p.StartInfo = new ProcessStartInfo(resultPath) { UseShellExecute = true };
-                            p.Start();
-                        }
+                        if (File.Exists(resultPath)) Process.Start(resultPath);
                         cancelNavigation = true;
                         break;
 
                     case ReportExecution.ActionViewCSVResult:
                         setCurrentExecution();
                         resultPath = _execution.GenerateCSVResult();
-                        if (File.Exists(resultPath))
-                        {
-                            var p = new Process();
-                            p.StartInfo = new ProcessStartInfo(resultPath) { UseShellExecute = true };
-                            p.Start();
-                        }
+                        if (File.Exists(resultPath)) Process.Start(resultPath);
                         cancelNavigation = true;
                         break;
 
                     case ReportExecution.ActionViewPrintResult:
                         setCurrentExecution();
                         resultPath = _execution.GeneratePrintResult();
-                        if (File.Exists(resultPath))
-                        {
-                            var p = new Process();
-                            p.StartInfo = new ProcessStartInfo(resultPath) { UseShellExecute = true };
-                            p.Start();
-                        }
+                        if (File.Exists(resultPath)) Process.Start(resultPath);
                         cancelNavigation = true;
                         break;
 
                     case ReportExecution.ActionViewPDFResult:
                         setCurrentExecution();
                         resultPath = _execution.GeneratePDFResult();
-                        if (File.Exists(resultPath))
-                        {
-                            var p = new Process();
-                            p.StartInfo = new ProcessStartInfo(resultPath) { UseShellExecute = true };
-                            p.Start();
-                        }
+                        if (File.Exists(resultPath)) Process.Start(resultPath);
                         cancelNavigation = true;
                         break;
 
                     case ReportExecution.ActionViewExcelResult:
                         setCurrentExecution();
                         resultPath = _execution.GenerateExcelResult();
-                        if (File.Exists(resultPath))
-                        {
-                            var p = new Process();
-                            p.StartInfo = new ProcessStartInfo(resultPath) { UseShellExecute = true };
-                            p.Start();
-                        }
+                        if (File.Exists(resultPath)) Process.Start(resultPath);
                         cancelNavigation = true;
                         break;
 
@@ -335,9 +310,7 @@ namespace Seal.Forms
                             var filePath = _navigation.NavigateScript(nav, _execution.Report, parameters);
                             if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
                             {
-                                var p = new Process();
-                                p.StartInfo = new ProcessStartInfo(filePath) { UseShellExecute = true };
-                                p.Start();
+                                Process.Start(filePath);
                             }
                             else
                             {

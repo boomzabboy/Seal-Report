@@ -10,7 +10,8 @@ using System.DirectoryServices.AccountManagement;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
-using Microsoft.AspNetCore.Http;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Seal.Model
 {
@@ -135,7 +136,7 @@ namespace Seal.Model
         /// <summary>
         /// Parameters for authentication: The Request done for the login
         /// </summary>
-        public HttpRequest Request = null;
+        public HttpRequestBase Request = null;
 
         /// <summary>
         /// The current Windows IPrincipal

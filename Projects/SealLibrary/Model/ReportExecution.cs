@@ -329,9 +329,7 @@ namespace Seal.Model
                 //Open external result viewer
                 if (!Report.HasErrors && !Report.ForOutput && Report.ExecutionContext == ReportExecutionContext.DesignerReport && !Report.CheckingExecution && Report.HasExternalViewer)
                 {
-                    var p = new Process();
-                    p.StartInfo = new ProcessStartInfo(Report.ResultFilePath) { UseShellExecute = true };
-                    p.Start();
+                    Process.Start(Report.ResultFilePath);
                 }
             }
             catch (Exception ex)
