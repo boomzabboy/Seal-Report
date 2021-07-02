@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><SealSecurity xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ProviderName>Database Authentication</ProviderName><UseCustomScript>true</UseCustomScript><Script>@using System.Data&#xD;
+﻿<?xml version="1.0" encoding="utf-8"?><SealSecurity xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ProviderName>No Security</ProviderName><Script>@using System.Data&#xD;
 @using System.Data.Common&#xD;
 @{&#xD;
     SecurityUser user = Model;&#xD;
