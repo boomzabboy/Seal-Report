@@ -492,7 +492,7 @@ var SWIMain = /** @class */ (function () {
     SWIMain.prototype.toJSTreeFolderData = function (data, result, parent) {
         for (var i = 0; i < data.length; i++) {
             var folder = data[i];
-            result[result.length] = { "id": folder.path, "parent": parent, "text": (folder.name == "" ? "Reports" : folder.name), "state": { "opened": folder.expand, "selected": (folder.name == "") } };
+            result[result.length] = { "id": folder.path, "parent": parent, "text": (folder.name == "" ? "รายงาน" : folder.name), "state": { "opened": folder.expand, "selected": (folder.name == "") } };
             if (folder.folders && folder.folders.length > 0)
                 _main.toJSTreeFolderData(folder.folders, result, folder.path);
             if (folder.right == 4)
@@ -593,9 +593,9 @@ var SWIMain = /** @class */ (function () {
         $tableHead.append($tr);
         if (_main._canEdit)
             $tr.append($("<th style='width:22px;' class='nosort hidden-xs'><input id='selectall-checkbox' type='checkbox'/></th>"));
-        $tr.append($("<th>").html(SWIUtil.tr("Report")));
-        $tr.append($("<th id='action-tableheader' class='nosort'>").html(SWIUtil.tr("Actions")));
-        $tr.append($("<th style='width:170px;min-width:170px;' class='hidden-xs'>").html(SWIUtil.tr("Last modification")));
+        $tr.append($("<th>").html(SWIUtil.tr("รายงาน")));
+        $tr.append($("<th id='action-tableheader' class='nosort'>").html(SWIUtil.tr("ดำเนินการ")));
+        $tr.append($("<th style='width:170px;min-width:170px;' class='hidden-xs'>").html(SWIUtil.tr("แก้ไขล่าสุด")));
         //Body
         for (var i = 0; i < data.files.length; i++) {
             var file = data.files[i];
@@ -729,8 +729,8 @@ var SWIMain = /** @class */ (function () {
                     sNext: ">>",
                     sLast: ">|"
                 },
-                sZeroRecords: SWIUtil.tr("No report"),
-                sLengthMenu: SWIUtil.tr("Show _MENU_ reports"),
+                sZeroRecords: SWIUtil.tr("ไม่มีรายงาน"),
+                sLengthMenu: SWIUtil.tr("แสดง _MENU_ รายงาน"),
                 sInfoPostFix: "",
             },
             columnDefs: [{
