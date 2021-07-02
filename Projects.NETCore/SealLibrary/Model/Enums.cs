@@ -76,6 +76,7 @@ namespace Seal.Model
         csv,
         pdf,
         excel,
+        word,
         custom
     }
 
