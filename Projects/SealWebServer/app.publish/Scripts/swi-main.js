@@ -482,7 +482,16 @@ var SWIMain = /** @class */ (function () {
         SWIUtil.ShowHideControl($("#menu-view-folders"), _main._currentView == "report" && _main._profile.showfolders);
         SWIUtil.ShowHideControl($("#menu-view-report"), _main._reportPath && _main._currentView != "report");
         SWIUtil.ShowHideControl($(".reportview"), reportShown);
-        SWIUtil.ShowHideControl($(".folderview"), _main._currentView != "report");
+        //SWIUtil.ShowHideControl($(".folderview"), _main._currentView != "report");
+        SWIUtil.ShowHideControl($("#folder-view"), _main._currentView != "report");
+        if (_main._currentView === "report") {
+            $("#file-view").addClass('col-sm-4');
+            $("#file-view").removeClass('col-sm-8');
+        }
+        else {
+            $("#file-view").removeClass('col-sm-4');
+            $("#file-view").addClass('col-sm-8');
+        }
         //Dividers
         SWIUtil.ShowHideControl($("#menu-divider-folders-report"), (_main._reportPath != "" || _main._currentView == "report") && _main._profile.showfolders);
         //title color
@@ -757,7 +766,7 @@ var SWIMain = /** @class */ (function () {
         _main.enableControls();
         //transition
         var reportShown = _main._reportPath && _main._currentView == "report";
-        $(!reportShown ? ".reportview" : ".folderview").css("opacity", "0.2");
+        //$(!reportShown ? ".reportview" : ".folderview").css("opacity", "0.2");
         $(reportShown ? ".reportview" : ".folderview").css("opacity", "1");
     };
     return SWIMain;

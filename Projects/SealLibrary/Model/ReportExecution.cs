@@ -1315,7 +1315,7 @@ namespace Seal.Model
                                     if (i == 0)
                                     {
                                         totalCell.IsTitle = true;
-                                        totalCell.Value = Report.Translate("Total");
+                                        totalCell.Value = Report.Translate("ผลรวม");
                                         totalCell.Element = null;
                                     }
                                 }
@@ -1374,7 +1374,7 @@ namespace Seal.Model
                                     if (i == 0 && !isTotalTitleSet)
                                     {
                                         if (!isHeaderLine) isTotalTitleSet = true;
-                                        value = Report.Translate("Total");
+                                        value = Report.Translate("ผลรวม");
                                     }
                                     if (isHeaderLine && rowTotalElements.Count() > 1) Helper.AddValue(ref value, " ", Report.TranslateElement(element, element.DisplayNameEl));
                                     if (!string.IsNullOrEmpty(value)) totalCell.IsTitle = true;
@@ -1482,7 +1482,7 @@ namespace Seal.Model
                     if (!line0[i].IsTotal)
                     {
                         //empty cell
-                        tttLine[i] = new ResultTotalCell() { Element = line0[i].Element, IsTotal = true, IsTitle = true, Value = (i == 0 ? Report.Translate("Total") : "") };
+                        tttLine[i] = new ResultTotalCell() { Element = line0[i].Element, IsTotal = true, IsTitle = true, Value = (i == 0 ? Report.Translate("ผลรวม") : "") };
                     }
                     else
                     {
