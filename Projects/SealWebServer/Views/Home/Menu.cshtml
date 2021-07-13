@@ -7,7 +7,7 @@
     var menuStyle = "";
 </script>
 
-<nav id="bar_top" class="navbar navbar-default navbar-inverse " style="transition:top 0.3s;">
+<nav id="bar_top" class="navbar navbar-default navbar-inverse "style="transition:top 0.3s;">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -17,8 +17,8 @@
                 <span class="icon-bar"></span>
             </button>
             <div>
-                <!-- <a id="brand-id" class="navbar-brand hidden-xs" href="#">@repository.Configuration.WebProductName</a> 
-		<a id="brand-id" class="navbar-brand hidden-xs" href="#"><img src="~/Images/logo.png" width="130" height="50"></a> -->
+                <!--<a id="brand-id" class="navbar-brand hidden-xs" href="#">@repository.Configuration.WebProductName</a>-->
+		        <!--<a id="brand-id" class="navbar-brand hidden-xs" href="#"><img src="~/Images/logo.png" width="130" height="50"></a>-->
                 <ul style="float:left;margin:0;padding:10px 0px;list-style:none">
                     <li class="dropdown">
                         <a id="menu-main-button" href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:10px 5px" title="@repository.TranslateWeb("เมนูรายงาน")">
@@ -36,23 +36,23 @@
                     </li>
                 </ul>
                 <a id="nav_button" href="#" class="navbar-brand"></a>
-                <span id="nav_badge" class="badge navbar-left hidden">@repository.TranslateReport("Nav")</span>
+                <span id="nav_badge" hidden="badge navbar-left hidden">@repository.TranslateReport("nav")</span>
             </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-            <ul class="nav navbar-nav pull-xs-right navbar-right">
+            <ul hidden="nav navbar-nav pull-xs-right navbar-right">
                 <li class="nav-item"><a id="profile-nav-item" class="navbar-white fa fa-user" style="font-size:20px" title="@repository.TranslateWeb("ข้อมูลส่วนตัว")"></a></li>
                 <li class="nav-item"><a id="disconnect-nav-item" class="navbar-white fa fa-sign-out" style="font-size:20px" title="@repository.TranslateWeb("ตัดการเชื่อมต่อ")"></a></li>
             </ul>
             <form class="navbar-form navbar-right folderview" style="display:none;">
-                <div class="input-group">
+                <div hidden="input-group">
                     <input id="search-pattern" type="text" class="form-control input-sm col-sm-1" style="width:120px" placeholder="@repository.TranslateWeb("ค้นหา")" />
                     <span class="input-group-btn">
                         <button id="search-nav-item" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                 </div>
             </form>
-            <button id="reload-nav-item" class="btn btn-primary navbar-btn navbar-right reportview" title="@repository.TranslateWeb("โหลดใหม่และค้นหา")">
+            <button id="reload-nav-item" hidden="btn btn-primary navbar-btn navbar-right reportview" title="@repository.TranslateWeb("โหลดใหม่และค้นหา")">
                 <span class="glyphicon glyphicon-play"></span>
             </button>
             <button id="execute_button" class="btn btn-success navbar-btn navbar-right reportview">@repository.TranslateReport("ดำเนินการ")</button>
@@ -61,23 +61,23 @@
             </button>
             <ul class="nav navbar-nav pull-xs-right navbar-right">
                 <li><a id="report_button" class="sr_tab reportview" data-toggle="tab" href="#report_div">@repository.TranslateReport("รายงาน")</a></li>
-                <li><a id="information_button" class="sr_tab reportview" data-toggle="tab" href="#information_div">@repository.TranslateReport("ข้อมูล")</a></li>
-				<li><a id="message_button" class="sr_tab reportview" data-toggle="tab" href="#message_div">@repository.TranslateReport("ข้อความ")</a></li>
+                <!--<li><a id="information_button" class="sr_tab reportview" data-toggle="tab" href="#information_div">@repository.TranslateReport("ข้อมูล")</a></li>-->
+				<!--<li><a id="message_button" class="sr_tab reportview" data-toggle="tab" href="#message_div">@repository.TranslateReport("ข้อความ")</a></li>-->
                 <li id="results_menu" class="dropdown reportview">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        @repository.TranslateReport("ผลลัพธ์")
+                        @repository.TranslateReport("ดาวน์โหลด")
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a id="HtmlResult" class="result_item" href="#">แสดงผลลัพธ์ HTML</a></li>
-                        <li><a id="PrintResult" class="result_item" href="#">แสดงผลลัพธ์ Print</a></li>
-                        <li><a id="CSVResult" class="result_item" href="#">แสดงผลลัพธ์ CSV</a></li>
-                        <li><a id="PDFResult" class="result_item converter_item" href="#">แสดงผลลัพธ์ PDF</a></li>
-                        <li><a id="ExcelResult" class="result_item converter_item" href="#">แสดงผลลัพธ์ Excel</a></li>
+                        <!--<li><a id="HtmlResult" class="result_item" href="#">ดาวน์โหลด HTML</a></li>-->
+                        <!--<li><a id="PrintResult" class="result_item" href="#">ดาวน์โหลด Print</a></li>-->
+                        <li><a id="CSVResult" class="result_item" href="#">ดาวน์โหลด CSV</a></li>
+                        <li><a id="PDFResult" class="result_item converter_item" href="#">ดาวน์โหลด PDF</a></li>
+                        <li><a id="ExcelResult" class="result_item converter_item" href="#">ดาวน์โหลด Excel</a></li>
                     </ul>
                 </li>
-                <li class="nav-item folderview"><a id="refresh-nav-item" class="navbar-white fa fa-refresh" title="@repository.TranslateWeb("โหลดใหม่")"></a></li>
-                <li class="nav-item folderview" style="display:none;" title="@repository.TranslateWeb("จัดการโฟลเดอร์")"><a id="folders-nav-item" style="font-size:20px" class="navbar-white fa fa-folder-open"></a></li>
+                <!--<li hidden="nav-item folderview"><a id="refresh-nav-item" class="navbar-white fa fa-refresh" title="@repository.TranslateWeb("โหลดใหม่")"></a></li>-->
+                <!--<li hidden="nav-item folderview" style="display:none;" title="@repository.TranslateWeb("จัดการโฟลเดอร์")"><a id="folders-nav-item" style="font-size:20px" class="navbar-white fa fa-folder-open"></a></li>-->
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
