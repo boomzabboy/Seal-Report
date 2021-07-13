@@ -148,8 +148,11 @@
     <Content Include="Images\faviconWebServer.ico" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\d3\th.js" />
     <Content Include="Scripts\dataTables.min.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\i18n\moment.th.js" />
+    <Content Include="Scripts\i18n\selectpicker.th.min.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\i18n\moment.de.js" />
     <Content Include="Scripts\i18n\moment.es.js" />
